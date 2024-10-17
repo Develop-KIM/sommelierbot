@@ -3,26 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI 소믈리에</title>
+    <title>AI 소믈리에 - 와인 추천</title>
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
     <link th:href="@{/css/chat/chat.css}" rel="stylesheet">
 </head>
 <body>
 
 <div class="container text-center">
-    <div>
+    <h1>AI 소믈리에 - 와인 추천</h1>
+
+    <!-- 질문 표시 -->
+    <div class="question">
         <p id="question" th:text="${question}">질문을 불러오는 중...</p>
     </div>
 
-    <form id="answerForm" action="/chat" th:action method="post">
+    <!-- 답변 폼 -->
+    <form th:action="@{/chat/{step}(step=${step})}" method="post">
         <div class="form-group">
-            <label>
-                <input type="text" name="answer" class="form-control" placeholder="Your answer" required>
-            </label>
+            <label for="answer">당신의 답변:</label>
+            <input type="text" id="answer" name="answer" class="form-control" required>
         </div>
-        <button type="submit" class="btn btn-primary">대답</button>
+        <button type="submit" class="btn btn-primary">다음</button>
     </form>
 
+    <!-- 이전 답변이 있을 경우 표시 (디버그용으로 추가) -->
+    <div th:if="${answer}">
+        <p>당신의 답변: <span th:text="${answer}"></span></p>
+    </div>
+
+    <!-- 단계 정보 표시 (디버그용으로 추가) -->
+    <div>
+        <p>현재 단계: <span th:text="${step}"></span></p>
+    </div>
 </div>
 
 </body>

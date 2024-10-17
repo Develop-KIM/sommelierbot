@@ -1,0 +1,4 @@
+.question-container {display: flex; align-items: center; justify-content: space-between;}
+.question-text {font-size: 20px; font-weight: bold;}
+.question-number {font-size: 16px; color: #888;}
+#answerForm {display: flex; justify-content: space-between;align-items: center;}
