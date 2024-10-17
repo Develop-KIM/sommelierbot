@@ -3,10 +3,12 @@ package com.developkim.sommelierbot.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@Controller
 @RequiredArgsConstructor
 public class ChatGptController {
 
@@ -23,12 +25,14 @@ public class ChatGptController {
 
     // 첫 번째 질문을 사용자에게 전달하는 엔드포인트
     @GetMapping("/chat")
-    public ResponseEntity<String> getChatPage() {
+    public String getChatPage(Model model) {
         // 첫 번째 질문 생성
-        String firstQuestion = generateFirstQuestion();
 
-        // 첫 번째 질문을 문자열로 반환
-        return ResponseEntity.ok(firstQuestion);
+        // 모델에 첫 번째 질문을 담아서 반환
+        model.addAttribute("question", generateFirstQuestion());
+
+        // chat.html 페이지로 이동
+        return "chat";  // chat.html을 반환
     }
 
     // 사용자 대답을 받고, AI가 다음 질문을 생성하는 엔드포인트

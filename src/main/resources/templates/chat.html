@@ -3,41 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sommelier Bot - Wine Recommendation</title>
+    <title>AI 소믈리에</title>
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
     <link th:href="@{/css/chat/chat.css}" rel="stylesheet">
 </head>
 <body>
 
 <div class="container text-center">
-    <h1>Wine Recommendation Chat</h1>
-
     <div>
-        <!-- 첫 번째 질문을 화면에 표시 -->
-        <p id="question">질문을 불러오는 중...</p>
+        <p id="question" th:text="${question}">질문을 불러오는 중...</p>
     </div>
 
-    <!-- 사용자 입력 폼 -->
-    <form action="/chat" method="post">
+    <form id="answerForm" action="/chat" th:action method="post">
         <div class="form-group">
-            <input type="text" name="answer" class="form-control" placeholder="Your answer">
+            <label>
+                <input type="text" name="answer" class="form-control" placeholder="Your answer" required>
+            </label>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">대답</button>
     </form>
-</div>
 
-<script>
-    // 페이지 로딩 후 첫 번째 질문을 API에서 가져와서 화면에 표시
-    window.onload = function() {
-        fetch('/chat')  // 서버에서 첫 번째 질문을 요청
-            .then(response => response.text())  // 텍스트 응답 받기
-            .then(data => {
-                // 'data'로 받은 질문을 화면에 표시
-                document.getElementById("question").innerText = data;
-            })
-            .catch(error => console.error("Error fetching the question:", error));
-    }
-</script>
+</div>
 
 </body>
 </html>
