@@ -1,0 +1,4 @@
+.btn-primary {background-color: #6f42c1; border-color: #6f42c1;}
+.btn-primary:hover {background-color: #5a34a0;border-color: #5a34a0;}
+.btn-lg {font-size: 1.5rem; padding: 10px 20px;}
+.d-flex {display: flex; justify-content: center; align-items: center; height: 100vh;}
