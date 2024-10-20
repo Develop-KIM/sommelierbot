@@ -8,13 +8,13 @@
 <body>
 <div class="container text-center">
   <h1>추천 와인</h1>
-  <p>당신의 취향에 맞는 와인 3가지:</p>
   <ul>
     <li th:each="wine : ${recommendations}">
-      <p th:text="${wine}"></p>
+      <p th:text="${wine.name}"></p>
+      <p>가격:<span th:text="${wine.price}"></span></p>
+      <p>사이트: <a th:href="${wine.url}" th:text="사이트"></a></p>
     </li>
   </ul>
-
 </div>
 </body>
 </html>
