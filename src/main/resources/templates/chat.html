@@ -11,13 +11,9 @@
 
 <div class="container text-center">
     <h1>AI 소믈리에 - 와인 추천</h1>
-
-    <!-- 질문 표시 -->
     <div class="question">
         <p id="question" th:text="${question}">질문을 불러오는 중...</p>
     </div>
-
-    <!-- 답변 폼 -->
     <form th:action="@{/chat/{step}(step=${step})}" method="post">
         <div class="form-group">
             <label for="answer">당신의 답변:</label>
@@ -25,16 +21,6 @@
         </div>
         <button type="submit" class="btn btn-primary">다음</button>
     </form>
-
-    <!-- 이전 답변이 있을 경우 표시 (디버그용으로 추가) -->
-    <div th:if="${answer}">
-        <p>당신의 답변: <span th:text="${answer}"></span></p>
-    </div>
-
-    <!-- 단계 정보 표시 (디버그용으로 추가) -->
-    <div>
-        <p>현재 단계: <span th:text="${step}"></span></p>
-    </div>
 </div>
 
 </body>
